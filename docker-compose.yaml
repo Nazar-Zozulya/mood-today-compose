@@ -1,0 +1,22 @@
+services:
+    backend:
+        image: mood-today-back
+        build:
+            context: ./mood-today-back
+        ports:
+            - "8000:8000"
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+            interval: 10s
+            timeout: 3s
+            retries: 5
+
+    frontend:
+        image: mood-today-front
+        build:
+            context: ./mood-today-front
+        ports:
+            - "9999:3000"
+        depends_on:
+            backend:
+                condition: service_healthy
