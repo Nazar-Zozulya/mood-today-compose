@@ -9,7 +9,7 @@ services:
       DATABASE_URL: ${DATABASE_URL}
       SECRET_KEY: ${SECRET_KEY}
     ports:
-      - "8000:8000"  # доступ снаружи сервера через IP:8000
+      - "8000:8000"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 10s
@@ -21,12 +21,12 @@ services:
     build:
       context: ./frontend
     ports:
-      - "9999:80"  # доступ снаружи сервера через IP:9999
+      - "9999:3000"  # внутренний 3000 -> внешний 9999
     depends_on:
       backend:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://frontend:80/"]
+      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
       interval: 10s
       timeout: 3s
       retries: 5
