@@ -10,23 +10,12 @@ services:
       SECRET_KEY: ${SECRET_KEY}
     ports:
       - "8000:8000"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
-      interval: 10s
-      timeout: 3s
-      retries: 5
 
   frontend:
     image: mood-today-front
     build:
       context: ./frontend
     ports:
-      - "9999:80"  # внешний 9999 пробрасывается на внутренний порт 80 (Nginx)
+      - "9999:80"
     depends_on:
-      backend:
-        condition: service_healthy
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/"]
-      interval: 10s
-      timeout: 3s
-      retries: 5
+      - backend
