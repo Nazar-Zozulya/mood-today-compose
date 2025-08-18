@@ -5,7 +5,7 @@ import moodRouter from './mood.app/mood.router'
 
 const app: Express = express()
 
-const HOST: string = "0.0.0.0";
+const HOST: string = process.env.SERVER_HOST;
 const PORT: number = 8000;
 
 app.use(express.json())
