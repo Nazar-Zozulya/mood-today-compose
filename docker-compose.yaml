@@ -2,7 +2,7 @@ services:
     backend:
         image: mood-today-back
         build:
-            context: ./mood-today-back
+            context: ./backend
         environment:
             DATABASE_URL: ${DATABASE_URL}
             SECRET_KEY: ${SECRET_KEY}
@@ -17,7 +17,7 @@ services:
     frontend:
         image: mood-today-front
         build:
-            context: ./mood-today-front
+            context: ./frontend
         ports:
             - "9999:3000"
         depends_on:
