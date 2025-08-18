@@ -1,0 +1,16 @@
+model Mood {
+  id         Int      @id @default(autoincrement())
+  answeredAt DateTime
+  mood       MoodType
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
+}
+
+
+
+enum MoodType {
+  angry
+  sad
+  happy
+  excited
+}

@@ -1,0 +1,6 @@
+.container {
+    border: none;
+    background: none;
+    display: flex;
+    cursor: pointer;
+}

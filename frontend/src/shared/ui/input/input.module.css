@@ -1,0 +1,42 @@
+.input {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    width: 200px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1px solid #AEE8DC;
+    border-radius: 10px;
+}
+
+.input:hover{
+    border-color: #4FD2B2;
+}
+
+.input:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.text{
+    font-family: 'Itim';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    color: #669B91;
+}
+
+.text:hover{
+    color: #00332B;
+}
+
+.error {
+    font-family: 'Itim';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #e70c0c;
+}

@@ -1,0 +1,1 @@
+export const BASE_URL = "https://mood-today-back.onrender.com"

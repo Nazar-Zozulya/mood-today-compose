@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 190px;
+    justify-content: space-between;
+}
+
+.dayText {
+    width: 56px;
+    height: 26px;
+    font-family: 'Itim';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    color: #000000;
+}
+
+.moodIcon{
+    width: 30px;
+    height: 30px;
+    filter: drop-shadow(0px 7px 5.7px rgba(0, 0, 0, 0.25));
+}
