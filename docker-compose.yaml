@@ -2,25 +2,32 @@ version: "3.9"
 
 services:
   backend:
-    image: mood-today-back
     build:
       context: ./backend
+    image: mood-today-back
     environment:
       DATABASE_URL: ${DATABASE_URL}
       SECRET_KEY: ${SECRET_KEY}
-      HOST: ${HOST}
+      HOST: ${HOST}       # 0.0.0.0 для прослушивания всех интерфейсов
+      PORT: ${PORT}       # 8000
     ports:
-      - "8000:8000"
+      - "8000:8000"       # 8000 сервера = 8000 контейнера
+    restart: unless-stopped
+    # healthcheck можно удалить, если мешает
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+    #   interval: 10s
+    #   timeout: 3s
+    #   retries: 5
 
   frontend:
-    image: mood-today-front
     build:
       context: ./frontend
+    image: mood-today-front
+    environment:
+      REACT_APP_BACKEND_URL: ${REACT_APP_BACKEND_URL}  # публичный IP бэка
     ports:
-      - "9999:80"
+      - "9999:80"           # 9999 сервера = 80 контейнера (nginx)
     depends_on:
       - backend
-    environment:
-      PORT: ${PORT}
-      HOST: ${HOST}
-      REACT_APP_BACKEND_URL: ${REACT_APP_BACKEND_URL}
+    restart: unless-stopped
