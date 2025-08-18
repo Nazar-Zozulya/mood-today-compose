@@ -1,1 +1,1 @@
-export const BASE_URL = "https://mood-today-back.onrender.com"
+export const BASE_URL = process.env.REACT_APP_BACKEND_URL
