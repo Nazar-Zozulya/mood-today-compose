@@ -11,6 +11,8 @@ services:
     depends_on:
       - backend
       - frontend
+    networks:
+      - app-network
     
   backend:
     image: mood-today-back
