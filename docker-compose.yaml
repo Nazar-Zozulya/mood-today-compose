@@ -21,8 +21,8 @@ services:
       SECRET_KEY: ${SECRET_KEY}
       HOST: ${HOST}
       PORT: ${PORT}
-    ports:
-      - "${PORT}:${PORT}"   # внешний порт совпадает с внутренним
+    # ports:
+    #   - "${PORT}:${PORT}"   # внешний порт совпадает с внутренним
     networks:
       - app-network
 
@@ -34,8 +34,8 @@ services:
       REACT_APP_BACKEND_URL: ${REACT_APP_BACKEND_URL}
       PORT: ${FRONTEND_PORT}
       HOST: ${FRONTEND_HOST}
-    ports:
-      - "9999:80"   # внешний порт для доступа через IP
+    # ports:
+    #   - "9999:80"   # внешний порт для доступа через IP
     depends_on:
       - backend
     networks:
